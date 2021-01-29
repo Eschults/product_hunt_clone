@@ -36,6 +36,5 @@ jobs:
     - name: Run tests
       run: |
         cp config/database.github.yml config/database.yml
-        bundle exec rails db:prepare
         bundle exec rails test
         bundle exec rails test:system
