@@ -1,41 +1,12 @@
 name: Test
 
-on: [push, pull_request]
+on: [push, pull_request]         # triggers on
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - 5432:5432
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+  build:
+    runs-on: ubuntu-latest       # runner
     steps:
-    - uses: actions/checkout@v2 # Give access to the repo
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Set up Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: Yarn install
-      run: yarn install
-    - name: Run tests
-      run: |
-        cp config/database.github.yml config/database.yml
-        bundle exec rails db:create db:migrate
-        bundle exec rails test
-        bundle exec rails test:system
+    - name: Checkout repository
+      uses: actions/checkout@v2  # uses a GHA from https://github.com/marketplace?type=actions
+    - name: Hello World!
+      run: echo "Hello World!"   # runs the script
