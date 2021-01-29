@@ -1,4 +1,4 @@
-default: &default
+test:
   adapter: postgresql
   encoding: unicode
   host: localhost
@@ -6,9 +6,3 @@ default: &default
   username: postgres
   password: postgres
   database: product_hunt_clone_test
-
-test:
-  <<: *default
-
-development:
-  <<: *default
