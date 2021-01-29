@@ -5,7 +5,7 @@ default: &default
   port: 5432
   username: postgres
   password: postgres
-  database: product_hunt_clone_gha_test
+  database: product_hunt_clone_test
 
 test:
   <<: *default
